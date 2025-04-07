@@ -3,7 +3,8 @@
 ## How to run
 To install the necessary requirements:
 
-* Create virtual environment using "python3 -m venv .venv"
+* Create virtual environment using "python3 -m venv venv"
+* Enter the environment by "source venv/bin/activate"
 * Run "pip install -r requirements.txt"
 
 # About the project
@@ -32,5 +33,5 @@ We will transform the data by:
 
 ## Model
 The current approach involves building two separate models:
-1. A model to predict chords
-2. A model to predict notes
+1. A model to predict chords using sigmoud
+2. A model to predict notes using soft max
