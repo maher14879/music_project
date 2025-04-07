@@ -32,6 +32,22 @@ We will transform the data by:
 * Have separate data set for notes without chords
 
 ## Model
-The current approach involves building two separate models:
-1. A model to predict chords using sigmoud
-2. A model to predict notes using soft max
+The current approach involves building two separate models.
+
+### Chords predicter
+A model to predict chords using sigmoud loss function given that we want the propability of each note being between a set of chords. 
+
+┌─────────────┐    ┌────────────────┐    ┌─────────────┐
+│  Input      │    │  Hidden Layers │    │  Output     │
+│  96-dim     ├───►│  2 × (96→96)   ├───►│  12-dim     │
+└─────────────┘    │  + ReLU        │    │  Sigmoid    │
+                   └────────────────┘    └─────────────┘
+
+
+The loss function is a Binary Cross Entropy with:. 
+* Parameter	    Default	Effect
+* fp_weight	    2.0	Base multiplier for false note predictions (since we are looking for notes we are sure to have, i.e. chords)
+* fn_relax	    3	Minimum correct predictions needed to trigger FN penalty reduction (Since we want at least 3 notes to make a chord)
+
+### Note predicter
+This model predicts a single note using softmax, based on the preceding/following notes and current chord.
