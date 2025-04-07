@@ -36,13 +36,13 @@ The current approach involves building two separate models.
 
 ### Chords predicter
 A model to predict chords using sigmoud loss function given that we want the propability of each note being between a set of chords. 
-
+```text
 ┌─────────────┐    ┌────────────────┐    ┌─────────────┐
 │  Input      │    │  Hidden Layers │    │  Output     │
 │  96-dim     ├───►│  2 × (96→96)   ├───►│  12-dim     │
 └─────────────┘    │  + ReLU        │    │  Sigmoid    │
                    └────────────────┘    └─────────────┘
-
+```
 
 The loss function is a Binary Cross Entropy with:. 
 * Parameter	    Default	Effect
