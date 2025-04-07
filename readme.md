@@ -39,15 +39,17 @@ A model to predict chords using sigmoud loss function given that we want the pro
 ```text
 ┌─────────────┐    ┌────────────────┐    ┌─────────────┐
 │  Input      │    │  Hidden Layers │    │  Output     │
-│  96-dim     ├───►│  2 × (96→96)   ├───►│  12-dim     │
+│  96-dim     ├───►│  96→96 → 96→32 ├───►│  12-dim     │
 └─────────────┘    │  + ReLU        │    │  Sigmoid    │
                    └────────────────┘    └─────────────┘
 ```
 
-The loss function is a Binary Cross Entropy with:. 
-* Parameter	    Default	Effect
-* fp_weight	    2.0	Base multiplier for false note predictions (since we are looking for notes we are sure to have, i.e. chords)
-* fn_relax	    3	Minimum correct predictions needed to trigger FN penalty reduction (Since we want at least 3 notes to make a chord)
+The loss function is created to penalize false positives more than false negatives. This effect can be ajusted using the b parameter. 
+\[
+f(x) = x + \frac{b^2}{x + b} - b
+\]
+
+This did not work and i instead used mean squared error like a loser.
 
 ### Note predicter
 This model predicts a single note using softmax, based on the preceding/following notes and current chord.
