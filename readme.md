@@ -1,4 +1,4 @@
-# Welcome to My Music Project
+# Welcome to My Music Project <3 UwU
 
 ## How to run
 To install the necessary requirements:
@@ -7,7 +7,7 @@ To install the necessary requirements:
 * Enter the environment by "source venv/bin/activate"
 * Run "pip install -r requirements.txt"
 
-# About the project
+# Attempt 1: Split Neural Network 
 
 ## Hypothesis
 
@@ -51,3 +51,14 @@ NOTE: This did not work and i instead used mean squared error like a loser.
 
 ### Note predicter
 This model predicts a single note using softmax, based on the preceding/following 4 notes and current chord. 
+
+```text
+┌─────────────┐    ┌────────────────┐    ┌─────────────┐
+│  Input      │    │  Hidden Layers │    │  Output     │
+│  36-dim     ├───►│  36→36 → 36→36 ├───►│  12-dim     │
+└─────────────┘    │  + ReLU        │    │  Sigmoid    │
+                   └────────────────┘    └─────────────┘
+```
+
+# Attempt 2: Markovian Network
+
