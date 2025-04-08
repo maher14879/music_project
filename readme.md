@@ -46,9 +46,9 @@ A model to predict chords using sigmoud loss function given that we want the pro
 ```
 
 The loss function is created to penalize false positives more than false negatives. This effect can be ajusted using the b parameter. 
-$
+$$
 f(x) = x + \frac{b^2}{x + b} - b
-$
+$$
 
 NOTE: This did not work and i instead used mean squared error like a loser.
 
