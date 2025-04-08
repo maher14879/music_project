@@ -15,12 +15,13 @@ The main hypothesis of this project is that music can be split into two statisti
 * Chords are more likely to be repeat and have structure than melody. By grouping each bar together and using a loss function that penalizes wrong notes, we get a model that predicts the notes that surely are in the chord. We then use this model to remove all the chord notes, and train a new model that looks for melody notes.
 * Some notes are likely to be in specific chords and in a specific melodic order. By using the aforementioned melody notes, we can create a model that predicts what type of notes are in a specific bar. 
 
-This project is divided into three main parts:
+This project is divided the following parts:
 
 1. Import midi data
 2. Transform the data
 3. Build a neural network to predict the next note
-4. Integrate the functionality into my website, allowing users to create their own music
+4. Create an algorithm that replaces notes in a song with predicted ones
+5. Integrate the functionality into my website, allowing users to create their own music
 
 ## Data
 For the music data, I am using a MIDI archive of Bach's compositions. However, I may expand the scope to include other musical pieces in the future.
@@ -45,11 +46,11 @@ A model to predict chords using sigmoud loss function given that we want the pro
 ```
 
 The loss function is created to penalize false positives more than false negatives. This effect can be ajusted using the b parameter. 
-\[
+$
 f(x) = x + \frac{b^2}{x + b} - b
-\]
+$
 
-This did not work and i instead used mean squared error like a loser.
+NOTE: This did not work and i instead used mean squared error like a loser.
 
 ### Note predicter
-This model predicts a single note using softmax, based on the preceding/following notes and current chord.
+This model predicts a single note using softmax, based on the preceding/following 4 notes and current chord. 
