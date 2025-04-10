@@ -60,5 +60,10 @@ This model predicts a single note using softmax, based on the preceding/followin
                    └────────────────┘    └─────────────┘
 ```
 
+
+
+
+
+
 # Attempt 2: Markovian Network
 
